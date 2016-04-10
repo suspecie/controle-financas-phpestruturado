@@ -16,7 +16,7 @@
     <label for="descricao">Descricao: </label>
     <input type="text" name="descricao" size="45"id="descricao"  value="{$linha['descricao']}">
     <br>
-    <input type="submit" value="Salvar">
+    <input type="submit" value="Atualizar">
 
 
 </form>

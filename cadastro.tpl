@@ -3,24 +3,43 @@
 <h2> CONTROLE DE GASTOS MENSAIS</h2>
 
 <p> Usuário: {$smarty.cookies.usuario}</p>
+<a  href="cadastro.php?acao=voltar"> HOME </a>
 
 <hr>
 
 <form action=" incluir.php" method="POST">
+    
+   <h4>CADASTRO DE RECEITAS E DESPESAS</h4>
 
     <label for="descricao">Descricao: </label>
-    <input type="text" name="descricao" size="45"id="descricao"  value="">
+     <input type="text" id="id_descricao" name="id_descricao" value="{$idDescricao}"  />
+        | <a href="cadastro.php?acao=buscades">Buscar Descrições </a><br>         
     <br>
     <label for="tipo">TIpo: </label>    
 
     <select name="tipo" id="tipo" name="tipo">
         <option value="0"></option>
 
-        {foreach from=$linha item=$x}
-            <option value="{$x.id}">{$x.descricao}</option>
+        {foreach from=$linha item=$tipo}
+            <option value="{$tipo.id}">{$tipo.descricao}</option>
         {/foreach}
     </select>
+    <br>
+     <label for="mes">Mês: </label>
+     <select name="mes" id="mes" name="mes">
+        <option value="0"></option>
 
+        {foreach from=$linha_mes item=$mes}
+            <option value="{$mes.mes}">{$mes.mes_num}</option>
+        {/foreach}
+    </select>
+    <label for="ano">Ano: </label>
+    <input type="text" name="ano" size="45"id="ano"  value="">
+    <br>
+    <label for="valor">Valor: </label>
+    <input type="text" name="valor" size="45"id="valor"  value="">
+    <br>
+     <input type="submit" value="Salvar">
 
 </form>
 

@@ -32,8 +32,6 @@ function criaform() {
      * Careggando o smarty
      */
     $smarty = new Smarty();
-
-
     $smarty->display('cadastrodescricao.tpl');
 }
 
