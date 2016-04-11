@@ -7,7 +7,7 @@
 <nav>
     <a href="cadastrodescricao.php">CADASTRO DE DESCRICOES</a> |
     <a href="cadastro.php">CADASTRO DE RECEITAS E DESPESAS</a> |
-    <a href="#">RELATÓRIOS</a>
+    <a href="planilha.php">RELATÓRIOS</a>
 </nav>
 
 

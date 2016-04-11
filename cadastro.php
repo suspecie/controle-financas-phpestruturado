@@ -360,6 +360,12 @@ if (sizeof($_POST) == 0) {
         criaformExclusao($id);
     }
     
+     //volta para a home
+    if ($acao == 'voltar') {
+
+        index();
+    }
+    
 } else {
 
     // mostra o que foi recebido do post e 
