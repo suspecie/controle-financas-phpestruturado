@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-10 22:43:55
-  from "C:\wamp64\www\controle-financas-phpestruturado\listadescricao.tpl" */
+/* Smarty version 3.1.29, created on 2016-04-11 12:12:38
+  from "/var/www/html/SUELLYN_PESSOAL/controle-financas-phpestruturado/listacadastro.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_570ad72be636e6_64458273',
+  'unifunc' => 'content_570bbee6d1be20_86145392',
   'file_dependency' => 
   array (
-    'a5e0d7b3309d4d1aa8fe9cdec4fbc925a9c0a012' => 
+    '065356c2d02eef9e113d7643404d3832f9cbc549' => 
     array (
-      0 => 'C:\\wamp64\\www\\controle-financas-phpestruturado\\listadescricao.tpl',
-      1 => 1460316471,
+      0 => '/var/www/html/SUELLYN_PESSOAL/controle-financas-phpestruturado/listacadastro.tpl',
+      1 => 1460387011,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:./comum/base.tpl' => 1,
   ),
 ),false)) {
-function content_570ad72be636e6_64458273 ($_smarty_tpl) {
+function content_570bbee6d1be20_86145392 ($_smarty_tpl) {
+if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/SUELLYN_PESSOAL/controle-financas-phpestruturado/vendor/smarty/smarty/libs/plugins/modifier.date_format.php';
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -32,6 +33,9 @@ $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo
         <tr>
             <th>ID</th>
             <th>DESCRICAO</th>
+            <th>TIPO</th>
+            <th>DATA</th>
+            <th>VALOR</th>
             <th>ACAO</th>
         </tr>
     </thead>
@@ -39,7 +43,7 @@ $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo
 
 
         <?php
-$_from = $_smarty_tpl->tpl_vars['descricoes']->value;
+$_from = $_smarty_tpl->tpl_vars['receitasdespesas']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
@@ -51,20 +55,24 @@ $_smarty_tpl->tpl_vars['linha']->_loop = true;
 $__foreach_linha_0_saved_local_item = $_smarty_tpl->tpl_vars['linha'];
 ?>
             <tr>
-                <td> <?php echo $_smarty_tpl->tpl_vars['linha']->value->id_descricao;?>
+                <td> <?php echo $_smarty_tpl->tpl_vars['linha']->value->id;?>
  </td>
-                <td>   <?php echo $_smarty_tpl->tpl_vars['linha']->value->descricao;?>
+                <td> <?php echo $_smarty_tpl->tpl_vars['linha']->value->descricao;?>
  </td>
-                <td> <a href='cadastrodescricao.php?acao=editar&id=<?php echo $_smarty_tpl->tpl_vars['linha']->value->id_descricao;?>
-'>ALTERAR</a> | 
-                    <a href='cadastrodescricao.php?acao=excluir&id=<?php echo $_smarty_tpl->tpl_vars['linha']->value->id_descricao;?>
+                <td> <?php echo $_smarty_tpl->tpl_vars['linha']->value->tipo;?>
+ </td>
+                <td> <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['linha']->value->data,"d/m/Y");?>
+ </td>
+                <td> R$<?php echo sprintf("%.2f",$_smarty_tpl->tpl_vars['linha']->value->valor);?>
+ </td>
+                <td> <a href='cadastro.php?acao=excluir&id=<?php echo $_smarty_tpl->tpl_vars['linha']->value->id;?>
 '>EXCLUIR</a>  </td> 
                 <?php
 $_smarty_tpl->tpl_vars['linha'] = $__foreach_linha_0_saved_local_item;
 }
 if (!$_smarty_tpl->tpl_vars['linha']->_loop) {
 ?>
-                <td colspan='3'> NENHUM REGISTRO! </td>
+                <td colspan='6'> NENHUM REGISTRO! </td>
             </tr>
 
         <?php

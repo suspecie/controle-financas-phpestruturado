@@ -1,6 +1,7 @@
 <?php
 /* CONEXAO BANCO DE DADOS */
 include_once './vendor/smarty/smarty/libs/Smarty.class.php';
+include_once './vendor/PHPMailer/PHPMailerAutoload.php';
 include "conexao.php";
 include "valida_cookies.php";
 $_SESSION['pagina'] = isset($_GET['pagina']) ? $_GET['pagina'] : null;
@@ -125,9 +126,26 @@ if (!isset($_POST["email"])) {
     
     $total_despesas = $total_despesasfixas + $total_despesasvariaveis;
     
-
+    var_dump($total_despesasvariaveis);die;
+    
     //total
     $total_registros = $total_receitas + $total_despesas;
+    
+    
+        $mail = new PHPMailer;
+        //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'suspeciegithub@gmail.com';                 // SMTP username
+        $mail->Password = 'githubsuspecie';                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;                                    // TCP port to connect to
+        $mail->setFrom('suspeciegithub@gmail.com', 'Su Specie');
+        $mail->addAddress($email);     // Add a recipient
+        $mail->isHTML(true);                                  // Set email format to HTML
+    
+    
         
         $msg = NULL;
         $msg .= "\nTotal de receitas: R\$$total_receitas";
@@ -137,12 +155,19 @@ if (!isset($_POST["email"])) {
         $smarty->assign('title', 'Planilha de Gastos Mensais');
         
         
-        if (mail($email, "RECEITAS E DESPESAS", $msg, "From:sspecie13@gmail.com", "-r sspecie13@gmail.com")) {
-            $smarty->assign("textError", "As despesas foram enviadas para o e-mail especificado.");
+        
+        $mail->Subject = "RECEITAS E DESPESAS";
+        $mail->Body = $msg;
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        if (!$mail->send()) {
+            $smarty->assign("textError", "Erro ao enviar o email! O erro ocorrido foi: " . $mail->ErrorInfo);
         } else {
-            $smarty->assign("textError", "Erro ao enviar o email!");
+            $smarty->assign("textSuccess", "As despesas do dia  foram enviadas para o e-mail especificado.");
         }
         $smarty->display('email.tpl');
+        
+        
+       
     }
 }
 ?>

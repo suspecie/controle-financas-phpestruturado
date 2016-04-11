@@ -34,3 +34,8 @@ FONTE: "PHP para quem conhece PHP" - Juliano Niederauer
 sudo chmod 777 controle-financas-phpestruturado -R
 
 2) Rodar o script controlefinancas.sql
+
+3) Alterar o arquivo conexao.php com o nome e senha do banco
+
+4) Acesso para o sistema: 
+Usuario: admin Senha: admin

@@ -20,7 +20,6 @@ $resultado = mysqli_query($con,$query);
 $linha = mysqli_fetch_assoc($resultado);
 
 
-
 //se o usuario existir faz set do usuario e senha no cookie, senao mostra erro.
 if (!empty($linha)) {
     setcookie("login", $usuario);
