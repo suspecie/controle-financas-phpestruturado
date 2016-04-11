@@ -22,8 +22,7 @@
                 <td> {$linha->tipo} </td>
                 <td> {$linha->data|date_format:"d/m/Y"} </td>
                 <td> R${$linha->valor|string_format:"%.2f"} </td>
-                <td> <a href='cadastro.php?acao=editar&id={$linha->id}'>ALTERAR</a> | 
-                    <a href='cadastro.php?acao=excluir&id={$linha->id}'>EXCLUIR</a>  </td> 
+                <td> <a href='cadastro.php?acao=excluir&id={$linha->id}'>EXCLUIR</a>  </td> 
                 {foreachelse}
                 <td colspan='6'> NENHUM REGISTRO! </td>
             </tr>

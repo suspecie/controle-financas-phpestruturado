@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-11 02:48:48
+/* Smarty version 3.1.29, created on 2016-04-11 03:30:07
   from "C:\wamp64\www\controle-financas-phpestruturado\cadastro.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_570b1090eeb411_85340986',
+  'unifunc' => 'content_570b1a3f644255_08783950',
   'file_dependency' => 
   array (
     'b6871b738a6b4ddeecbff47aba6a50eaa414d5af' => 
     array (
       0 => 'C:\\wamp64\\www\\controle-financas-phpestruturado\\cadastro.tpl',
-      1 => 1460342837,
+      1 => 1460345113,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:./comum/base.tpl' => 1,
   ),
 ),false)) {
-function content_570b1090eeb411_85340986 ($_smarty_tpl) {
+function content_570b1a3f644255_08783950 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:\\wamp64\\www\\controle-financas-phpestruturado\\vendor\\smarty\\smarty\\libs\\plugins\\function.html_options.php';
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -42,7 +42,7 @@ $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo
     <input type="hidden" name="usuario" size="45"id="usuario"  value="<?php echo $_COOKIE['login'];?>
 ">
     <label for="descricao">Descricao: </label>
-     <input type="text" id="id_descricao" name="id_descricao" value="<?php echo $_smarty_tpl->tpl_vars['idDescricao']->value;?>
+    <input type="text" id="id_descricao" name="id_descricao" value="<?php echo $_smarty_tpl->tpl_vars['idDescricao']->value;?>
 "  />
         | <a href="cadastro.php?acao=buscades">Buscar Descrições </a><br>         
     <br>

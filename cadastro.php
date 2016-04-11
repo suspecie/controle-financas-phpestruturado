@@ -79,7 +79,7 @@ function mostraGrid() {
     //busca os registros para a lista    
     $query = "SELECT rd.*, des.descricao AS descricao, tipo.descricao AS tipo FROM receita_despesa rd
         LEFT JOIN descricao des ON (des.id_descricao = rd.id_descricao)
-        LEFT JOIN tipo_receita_despesa tipo ON (tipo.id = rd.id_tipo_receita_despesa)  LIMIT $inicio,$total_reg";
+        LEFT JOIN tipo_receita_despesa tipo ON (tipo.id = rd.id_tipo_receita_despesa) ORDER BY ID ASC LIMIT $inicio,$total_reg";
     $resultado = mysqli_query($con, $query);
 
     $i = 0;
@@ -272,7 +272,12 @@ function salvaRegistro($dados) {
     mysqli_query($con,$query) or die(mysql_error());
 }
 
-
+/**
+ * 
+ * @global type $con
+ * @param type $usuario
+ * @return type
+ */
 function buscausuario($usuario = NULL){
    global $con;
    $login = $usuario;
@@ -284,6 +289,44 @@ function buscausuario($usuario = NULL){
     $idusuario = $linha['id'];
     
    return $idusuario; 
+}
+
+/**
+ * 
+ * @global type $con
+ */
+function index() {
+    global $con;
+
+    /**
+     * Careggando o smarty
+     */
+    $smarty = new Smarty();
+    $smarty->display('home.tpl');
+}
+
+/**
+ * 
+ * @param type $id
+ */
+function criaformExclusao($id) {
+    /**
+     * Careggando o smarty
+     */
+    $smarty = new Smarty();
+    $smarty->assign('id', $id);
+    $smarty->display('excluircadastro.tpl');
+}
+
+/**
+ * 
+ * @global type $con
+ * @param type $id
+ */
+function removeRegistro($id) {
+    GLOBAL $con;
+    $query = "delete from receita_despesa where id='" . $id . "'";
+    mysqli_query($con,$query) or die(mysqli_error());
 }
 
 
@@ -311,6 +354,12 @@ if (sizeof($_POST) == 0) {
     if ($acao == 'buscades') {
         criaFormBuscades();
     }
+    
+    //mostra o form de exclusao
+    if ($acao == 'excluir') {
+        criaformExclusao($id);
+    }
+    
 } else {
 
     // mostra o que foi recebido do post e 
@@ -327,6 +376,13 @@ if (sizeof($_POST) == 0) {
     if ($id == null && $acao_post == null) {
         salvaRegistro($_POST);
         echo "Registro cadastrado com sucesso! ";
+        echo "<br><a href='cadastro.php'> Voltar</a>";
+    }
+    
+      // Excluir
+    if ($id != null && $acao_post == 'excluir') {
+        removeRegistro($id);
+        echo "Registro Removido com sucesso! ";
         echo "<br><a href='cadastro.php'> Voltar</a>";
     }
     

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-11 00:28:40
+/* Smarty version 3.1.29, created on 2016-04-11 03:30:07
   from "C:\wamp64\www\controle-financas-phpestruturado\listacadastro.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_570aefb8ec1ee2_98810011',
+  'unifunc' => 'content_570b1a3f6c2e56_08859944',
   'file_dependency' => 
   array (
     'a2f166e5a17b66ef928639b288fb267b13e45664' => 
     array (
       0 => 'C:\\wamp64\\www\\controle-financas-phpestruturado\\listacadastro.tpl',
-      1 => 1460334514,
+      1 => 1460345403,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:./comum/base.tpl' => 1,
   ),
 ),false)) {
-function content_570aefb8ec1ee2_98810011 ($_smarty_tpl) {
+function content_570b1a3f6c2e56_08859944 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\wamp64\\www\\controle-financas-phpestruturado\\vendor\\smarty\\smarty\\libs\\plugins\\modifier.date_format.php';
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -65,9 +65,7 @@ $__foreach_linha_0_saved_local_item = $_smarty_tpl->tpl_vars['linha'];
  </td>
                 <td> R$<?php echo sprintf("%.2f",$_smarty_tpl->tpl_vars['linha']->value->valor);?>
  </td>
-                <td> <a href='cadastro.php?acao=editar&id=<?php echo $_smarty_tpl->tpl_vars['linha']->value->id;?>
-'>ALTERAR</a> | 
-                    <a href='cadastro.php?acao=excluir&id=<?php echo $_smarty_tpl->tpl_vars['linha']->value->id;?>
+                <td> <a href='cadastro.php?acao=excluir&id=<?php echo $_smarty_tpl->tpl_vars['linha']->value->id;?>
 '>EXCLUIR</a>  </td> 
                 <?php
 $_smarty_tpl->tpl_vars['linha'] = $__foreach_linha_0_saved_local_item;
