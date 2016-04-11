@@ -5,6 +5,9 @@
 <p> Usuário: {$smarty.cookies.login}</p>
 <hr>
 
+ <a href="email.php?data_antes={$data_antes}&data_depois={$data_depois}">EMAIL</a>
+
+<hr>
 PERIODO DE: {$data_antes} ATÉ: {$data_depois}
 
 <hr>
