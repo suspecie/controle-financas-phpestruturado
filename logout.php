@@ -1,8 +1,8 @@
 <?php
 
-setcookie("usuario");
+setcookie("login");
 setcookie("senha");
-header("Location: index.php");
+header("Location: ./index.php");
 
 
 ?>

@@ -2,12 +2,12 @@
 
 <h2> CONTROLE DE GASTOS MENSAIS</h2>
 
-<p> Usuário: {$smarty.cookies.usuario}</p>
+<p> Usuário: {$smarty.cookies.login}</p>
 <a  href="cadastro.php?acao=voltar"> HOME </a>
 
 <hr>
 
-<form action=" incluir.php" method="POST">
+<form action="cadastro.php" method="POST">
     
    <h4>CADASTRO DE RECEITAS E DESPESAS</h4>
 
@@ -15,7 +15,7 @@
      <input type="text" id="id_descricao" name="id_descricao" value="{$idDescricao}"  />
         | <a href="cadastro.php?acao=buscades">Buscar Descrições </a><br>         
     <br>
-    <label for="tipo">TIpo: </label>    
+    <label for="tipo">Tipo: </label>    
 
     <select name="tipo" id="tipo" name="tipo">
         <option value="0"></option>
@@ -27,11 +27,7 @@
     <br>
      <label for="mes">Mês: </label>
      <select name="mes" id="mes" name="mes">
-        <option value="0"></option>
-
-        {foreach from=$linha_mes item=$mes}
-            <option value="{$mes.mes}">{$mes.mes_num}</option>
-        {/foreach}
+         {html_options options=$mes}
     </select>
     <label for="ano">Ano: </label>
     <input type="text" name="ano" size="45"id="ano"  value="">

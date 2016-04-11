@@ -5,9 +5,9 @@
 $host =  "localhost";
 $db =  "controlefinancasdb";
 $user = "root";
-$pass = "123";
+$pass = "";
 
-$con = mysql_connect($host, $user, $pass) 
-        or trigger_error(mysql_error(), E_USER_ERROR);
+$con = mysqli_connect($host, $user, $pass, $db, null, null);
 
-mysql_select_db($db, $con);
+
+mysqli_select_db($con, $db);

@@ -2,7 +2,7 @@
 
 <h2> CONTROLE DE GASTOS MENSAIS</h2>
 
-<p> Usuário: {$smarty.cookies.usuario}</p>
+<p> Usuário: {$smarty.cookies.login}</p>
 <a  href="cadastrodescricao.php?acao=voltar"> HOME </a>
 
 <hr>

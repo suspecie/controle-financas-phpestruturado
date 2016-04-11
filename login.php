@@ -16,8 +16,8 @@ $senha = $_POST['senha'];
 
 //busca usuario e senha cadastrado no banco
 $query = "SELECT * FROM usuario WHERE login ='$usuario' AND senha = '$senha' ";
-$resultado = mysql_query($query, $con);
-$linha = mysql_fetch_assoc($resultado);
+$resultado = mysqli_query($con,$query);
+$linha = mysqli_fetch_assoc($resultado);
 
 
 
@@ -28,6 +28,6 @@ if (!empty($linha)) {
     $smarty = new Smarty();
     $smarty->display('home.tpl');
 } else {
-    header("Location: /index.php?erro=login");
+    header("Location: ./index.php?erro=login");
 }
 ?>
