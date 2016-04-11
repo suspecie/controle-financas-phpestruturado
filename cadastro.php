@@ -211,10 +211,81 @@ function criaFormBuscades($texto = NULL, $retorno = NULL) {
     $smarty = new Smarty();
     $smarty->assign('linha', $linha);
     $smarty->assign('link_retorno', $link_retorno);
-    var_dump($link_retorno);
     $smarty->assign('texto', $texto);
     $smarty->display('busca.tpl');
 }
+
+/**
+ * 
+ * @global type $con
+ * @param type $dados
+ */
+function salvaRegistro($dados) {
+    global $con;
+
+    //Validação Server Side
+    $erro_mg = '';
+    if (!isset($dados['id_descricao']) || $dados['id_descricao'] == '') {
+        $erro_mg .=' Descricao é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    if (!isset($dados['tipo']) || $dados['tipo'] == '') {
+        $erro_mg .=' Tipo é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    if (!isset($dados['mes']) || $dados['mes'] == '') {
+        $erro_mg .=' Mes é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    if (!isset($dados['ano']) || $dados['ano'] == '') {
+        $erro_mg .=' Ano é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    if (!isset($dados['valor']) || $dados['valor'] == '') {
+        $erro_mg .=' Valor é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    
+    if (strlen($erro_mg) > 0) {
+       die("<h1>Erro de Validação!</h1>" . $erro_mg . " Verifique!");      
+    }
+    
+    $data = null;
+    if(isset($dados['mes']) && isset($dados['ano'])){
+        
+        $ano = $dados['ano'];
+        $mes = $dados['mes'];
+        $data = $ano . '-' . $mes . '-' . date('d');
+    }
+    
+    $valor = null;
+    if(isset($dados['valor'])){
+        $valor = str_replace(',', '.',$dados['valor']);
+    }
+    
+    $usuario = buscausuario($dados['usuario']);
+    
+
+    $query = "INSERT INTO receita_despesa(id_descricao,id_tipo_receita_despesa,data,valor,id_usuario)" .
+            " VALUES('" . $dados['id_descricao'] . "','" . $dados['tipo'] . "','" . $data . "','" . $valor . "','" . $usuario . "')";
+    
+    mysqli_query($con,$query) or die(mysql_error());
+}
+
+
+function buscausuario($usuario = NULL){
+   global $con;
+   $login = $usuario;
+   
+    //busca id do usuario logado 
+    $resultado = mysqli_query($con,"SELECT * FROM usuario WHERE upper(login) like upper('%" .$login. "%')");
+    $linha = mysqli_fetch_assoc($resultado);
+    
+    $idusuario = $linha['id'];
+    
+   return $idusuario; 
+}
+
 
 /* FIM FUNÇÕES */
 
@@ -248,10 +319,19 @@ if (sizeof($_POST) == 0) {
     $id = isset($_POST['id']) ? $_POST['id'] : null;
     $acao_post = isset($_POST['acao_post']) ? $_POST['acao_post'] : null;
     
-     //Post do buscar departamentos
+    //Post do buscar departamentos
     if ($acao_post == 'buscades') {
         criaFormBuscades($_POST['busca']);
     }
+    
+    if ($id == null && $acao_post == null) {
+        salvaRegistro($_POST);
+        echo "Registro cadastrado com sucesso! ";
+        echo "<br><a href='cadastro.php'> Voltar</a>";
+    }
+    
+    
+    
 }
 
 

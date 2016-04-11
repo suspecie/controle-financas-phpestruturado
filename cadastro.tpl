@@ -11,6 +11,7 @@
     
    <h4>CADASTRO DE RECEITAS E DESPESAS</h4>
 
+    <input type="hidden" name="usuario" size="45"id="usuario"  value="{$smarty.cookies.login}">
     <label for="descricao">Descricao: </label>
      <input type="text" id="id_descricao" name="id_descricao" value="{$idDescricao}"  />
         | <a href="cadastro.php?acao=buscades">Buscar Descrições </a><br>         
