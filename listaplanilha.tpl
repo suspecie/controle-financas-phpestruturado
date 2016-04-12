@@ -6,7 +6,9 @@
 <hr>
 
  
- <a href="email.php?data_antes={$data_antes}&data_depois={$data_depois}">EMAIL</a>
+<a href="email.php?data_antes={$data_antes}&data_depois={$data_depois}">EMAIL</a> |
+<a href="grafico.php?data_antes={$data_antes}&data_depois={$data_depois}">GRÁFICO</a> |
+<a href="pdf.php?data_antes={$data_antes}&data_depois={$data_depois}&total_receitas={$total_receitas}&total_despesas={$total_despesas}&total_registros={$total_registros}" target="_blank">PDF</a>
 <form role="form" action="email.php" method="POST" name="myForm" id="myForm" enctype="multipart/form-data">
 
 <hr>
