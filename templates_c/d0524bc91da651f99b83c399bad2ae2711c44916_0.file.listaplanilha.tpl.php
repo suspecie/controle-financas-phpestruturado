@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-12 03:11:00
+/* Smarty version 3.1.29, created on 2016-04-12 03:49:27
   from "C:\wamp64\www\controle-financas-phpestruturado\listaplanilha.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_570c6744488516_88006464',
+  'unifunc' => 'content_570c7047896f40_98913119',
   'file_dependency' => 
   array (
     'd0524bc91da651f99b83c399bad2ae2711c44916' => 
     array (
       0 => 'C:\\wamp64\\www\\controle-financas-phpestruturado\\listaplanilha.tpl',
-      1 => 1460430589,
+      1 => 1460432959,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:./comum/base.tpl' => 1,
   ),
 ),false)) {
-function content_570c6744488516_88006464 ($_smarty_tpl) {
+function content_570c7047896f40_98913119 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\wamp64\\www\\controle-financas-phpestruturado\\vendor\\smarty\\smarty\\libs\\plugins\\modifier.date_format.php';
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -39,7 +39,7 @@ $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo
 ">EMAIL</a> |
 <a href="grafico.php?data_antes=<?php echo $_smarty_tpl->tpl_vars['data_antes']->value;?>
 &data_depois=<?php echo $_smarty_tpl->tpl_vars['data_depois']->value;?>
-">GRÁFICO</a> |
+" target="_blank">GRÁFICO</a> |
 <a href="pdf.php?data_antes=<?php echo $_smarty_tpl->tpl_vars['data_antes']->value;?>
 &data_depois=<?php echo $_smarty_tpl->tpl_vars['data_depois']->value;?>
 &total_receitas=<?php echo $_smarty_tpl->tpl_vars['total_receitas']->value;?>

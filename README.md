@@ -39,3 +39,5 @@ sudo chmod 777 controle-financas-phpestruturado -R
 
 4) Acesso para o sistema: 
 Usuario: admin Senha: admin
+
+5)Somente a funcionalidade do gráfico não consegui passar as informações do php para o gráfico por isso fiz somente um exemplo.
