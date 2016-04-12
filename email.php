@@ -1,7 +1,7 @@
 <?php
 /* CONEXAO BANCO DE DADOS */
 include_once './vendor/smarty/smarty/libs/Smarty.class.php';
-include_once './PHPMailer/PHPMailerAutoload.php';
+include_once './vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 include "conexao.php";
 include "valida_cookies.php";
 $_SESSION['pagina'] = isset($_GET['pagina']) ? $_GET['pagina'] : null;
@@ -20,7 +20,7 @@ if (!isset($_POST["email"])) {
         $smarty = new Smarty();
         $smarty->assign('title', 'Planilha de Gastos Mensais');
         $smarty->assign("textError", "O e-mail: {$email} é invalido!");
-        $smarty->display('email.tpl');
+        $smarty->display('envio.tpl');
     } else {
       
     $data_antes = isset($_POST['data_antes']) ? $_POST['data_antes'] : null;

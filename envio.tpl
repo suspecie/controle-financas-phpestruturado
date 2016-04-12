@@ -1,6 +1,7 @@
 {include file ="./comum/topo.tpl"}
 
-<h2> E-MAIL ENVIADO COM SUCESSO!</h2>
+<h3>{$textSuccess|default:""}</h3>
+<h3>{$textError|default:""}</h3>
 
-<a href="planilha.php">Voltar</a>
+<a href="email.php">Voltar</a>
 {include file ="./comum/base.tpl"}
