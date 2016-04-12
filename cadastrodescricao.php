@@ -241,8 +241,10 @@ function criaformExclusao($id) {
  * @param type $id
  */
 function removeRegistro($id) {
-    GLOBAL $con;
+    global $con;
+   
     $query = "delete from descricao where id_descricao='" . $id . "'";
+     
     mysqli_query($con,$query) or die(mysqli_error());
 }
 

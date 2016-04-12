@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-10 22:43:55
+/* Smarty version 3.1.29, created on 2016-04-12 05:50:47
   from "C:\wamp64\www\controle-financas-phpestruturado\listadescricao.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_570ad72be636e6_64458273',
+  'unifunc' => 'content_570c8cb7218529_53071943',
   'file_dependency' => 
   array (
     'a5e0d7b3309d4d1aa8fe9cdec4fbc925a9c0a012' => 
     array (
       0 => 'C:\\wamp64\\www\\controle-financas-phpestruturado\\listadescricao.tpl',
-      1 => 1460316471,
+      1 => 1460440237,
       2 => 'file',
     ),
   ),
@@ -21,13 +21,21 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:./comum/base.tpl' => 1,
   ),
 ),false)) {
-function content_570ad72be636e6_64458273 ($_smarty_tpl) {
+function content_570c8cb7218529_53071943 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:./comum/topo.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 <hr>
 
-<table border="1">
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel panel-warning"></div>
+  <div class="panel-body">
+  
+
+
+  <!-- Table -->
+  <table class="table">
     <thead>
         <tr>
             <th>ID</th>
@@ -75,7 +83,9 @@ $_smarty_tpl->tpl_vars['linha'] = $__foreach_linha_0_saved_item;
 ?>
 
     </tbody>
-</table>
+  </table>
+          </div>
+</div>
 
  <?php echo $_smarty_tpl->tpl_vars['paginador']->value;?>
 

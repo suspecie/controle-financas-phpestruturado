@@ -1,5 +1,7 @@
 {include file ="./comum/topo.tpl"}
 
+
+
 <h2> CONTROLE DE GASTOS MENSAIS</h2>
 
 <p> Usuário: {$smarty.cookies.login}</p>
@@ -7,15 +9,19 @@
 
 <hr>
 
-<form action="cadastrodescricao.php" method="POST">
 
-    <h4>CADASTRO DE DESCRICAO</h4>
-    <br>
-    <label for="descricao">Descricao: </label>
-    <input type="text" name="descricao" size="45"id="descricao"  value="">
-    <br>
-   <input type="submit" value="Salvar">
 
+<form id="contactForm" action="cadastrodescricao.php" method="POST">
+    <h4>CADASTRO DE DESCRIÇÃO</h4><br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group" >
+                <input type="text"  class="form-control"  placeholder="Descrição" name="descricao" id="descricao"  value="">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+    </div>
+    <input type="submit"  class="page-scroll btn btn-warning" value="Salvar">
 
 </form>
 

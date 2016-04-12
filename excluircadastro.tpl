@@ -2,20 +2,20 @@
 
 <h2> CONTROLE DE GASTOS MENSAIS</h2>
 
-<p> Usuário: {$smarty.cookies.usuario}</p>
+<p> Usuário: {$smarty.cookies.login}</p>
 
 <hr>
 
 
-<form action="cadastro.php?" method="POST">
+<form id="contactForm" action="cadastro.php?" method="POST">
 
     <br>
     <input type="hidden" name="acao_post" id="acao_post" value="excluir" />
        <input type="hidden" name="id" id="id" value="{$id}" />     
     Tem certeza que deseja excluir o registro {$id} ?
 
-    <input type="submit" value="SIM" name="btnsim" />
-    <input type="reset" value="NAO" name="btnnao" onclick="window.history.back();"/>
+    <input type="submit" value="SIM" class="page-scroll btn btn-warning" name="btnsim" />
+    <input type="reset" value="NAO"  class="page-scroll btn btn-warning" name="btnnao" onclick="window.history.back();"/>
 
 </form>
 

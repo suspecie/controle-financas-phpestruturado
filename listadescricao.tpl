@@ -1,7 +1,15 @@
 {include file ="./comum/topo.tpl"}
 <hr>
 
-<table border="1">
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel panel-warning"></div>
+  <div class="panel-body">
+  
+
+
+  <!-- Table -->
+  <table class="table">
     <thead>
         <tr>
             <th>ID</th>
@@ -25,7 +33,9 @@
         {/foreach}
 
     </tbody>
-</table>
+  </table>
+          </div>
+</div>
 
  {$paginador}
 
