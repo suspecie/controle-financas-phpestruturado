@@ -5,7 +5,9 @@
 <p> Usuário: {$smarty.cookies.login}</p>
 <hr>
 
+ 
  <a href="email.php?data_antes={$data_antes}&data_depois={$data_depois}">EMAIL</a>
+<form role="form" action="email.php" method="POST" name="myForm" id="myForm" enctype="multipart/form-data">
 
 <hr>
 PERIODO DE: {$data_antes} ATÉ: {$data_depois}
@@ -119,6 +121,6 @@ PERIODO DE: {$data_antes} ATÉ: {$data_depois}
     
 </table>
 
-
+</form>
 
 {include file ="./comum/base.tpl"}

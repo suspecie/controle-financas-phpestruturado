@@ -5,7 +5,7 @@
 $host =  "localhost";
 $db =  "controlefinancasdb";
 $user = "root";
-$pass = "123";
+$pass = "";
 
 $con = mysqli_connect($host, $user, $pass, $db, null, null);
 

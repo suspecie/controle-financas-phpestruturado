@@ -1,17 +1,18 @@
 <?php
 /* CONEXAO BANCO DE DADOS */
 include_once './vendor/smarty/smarty/libs/Smarty.class.php';
-include_once './vendor/PHPMailer/PHPMailerAutoload.php';
+include_once './PHPMailer/PHPMailerAutoload.php';
 include "conexao.php";
 include "valida_cookies.php";
 $_SESSION['pagina'] = isset($_GET['pagina']) ? $_GET['pagina'] : null;
 
-$data_antes = isset($_GET['data_antes']) ? $_GET['data_antes'] : null;
-$data_depois = isset($_GET['data_depois']) ? $_GET['data_depois'] : null;
-        
+
 if (!isset($_POST["email"])) {
+    $data_antes = isset($_GET['data_antes']) ? $_GET['data_antes'] : null;
+    $data_depois = isset($_GET['data_depois']) ? $_GET['data_depois'] : null; 
     $smarty = new Smarty();
-    $smarty->assign('title', 'Planilha de Gastos Mensais');    
+     $smarty->assign('data_antes', $data_antes);    
+    $smarty->assign('data_depois', $data_depois);    
     $smarty->display('email.tpl');
 } else {
     $email = $_POST["email"];
@@ -21,36 +22,10 @@ if (!isset($_POST["email"])) {
         $smarty->assign("textError", "O e-mail: {$email} é invalido!");
         $smarty->display('email.tpl');
     } else {
-       
       
-    
-   //busca os registros para a lista de receitas fixas   
-    $query_receitasfixas = "SELECT rd.*, des.descricao AS descricao, tipo.descricao AS tipo FROM receita_despesa rd
-        LEFT JOIN descricao des ON (des.id_descricao = rd.id_descricao)
-        LEFT JOIN tipo_receita_despesa tipo ON (tipo.id = rd.id_tipo_receita_despesa) WHERE rd.id_tipo_receita_despesa = 1  AND (rd.data >= '" .$data_antes."' AND rd.data <= '" .$data_depois."') ORDER BY ID ASC";
-    $resultado_receitasfixas = mysqli_query($con, $query_receitasfixas);
-
-    $i = 0;
-    $receitasfixas = NULL;
-    while ($linha_receitasfixas = mysqli_fetch_object($resultado_receitasfixas)) {
-        $receitasfixas[$i] = $linha_receitasfixas;
-        $i = $i + 1;
-    }
-    
-    
-    //busca os registros para a lista de receitas variaveis   
-    $query_receitasvariaveis = "SELECT rd.*, des.descricao AS descricao, tipo.descricao AS tipo FROM receita_despesa rd
-        LEFT JOIN descricao des ON (des.id_descricao = rd.id_descricao)
-        LEFT JOIN tipo_receita_despesa tipo ON (tipo.id = rd.id_tipo_receita_despesa) WHERE rd.id_tipo_receita_despesa = 2 AND (rd.data >= '" .$data_antes."' AND rd.data <= '" .$data_depois."') ORDER BY ID ASC";
-    $resultado_receitasvariaveis = mysqli_query($con, $query_receitasvariaveis);
-
-    $j = 0;
-    $receitasvariaveis = NULL;
-    while ($linha_receitasvariaveis = mysqli_fetch_object($resultado_receitasvariaveis)) {
-        $receitasvariaveis[$i] = $linha_receitasvariaveis;
-        $j = $j + 1;
-    }
-    
+    $data_antes = isset($_POST['data_antes']) ? $_POST['data_antes'] : null;
+    $data_depois = isset($_POST['data_depois']) ? $_POST['data_depois'] : null; 
+      
     //busca os registros para a lista de total de receitas
     $query_receitasfixastotal = "SELECT SUM(rd.valor) as total FROM receita_despesa rd    
         LEFT JOIN descricao des ON (des.id_descricao = rd.id_descricao)
@@ -73,35 +48,6 @@ if (!isset($_POST["email"])) {
     
     $total_receitas = $total_receitasfixas + $total_receitasvariaveis;
      
-    
-    //busca os registros para a lista de despesas fixas  
-    $query_despesasfixas = "SELECT rd.*, des.descricao AS descricao, tipo.descricao AS tipo FROM receita_despesa rd
-        LEFT JOIN descricao des ON (des.id_descricao = rd.id_descricao)
-        LEFT JOIN tipo_receita_despesa tipo ON (tipo.id = rd.id_tipo_receita_despesa) WHERE rd.id_tipo_receita_despesa = 3  AND (rd.data >= '" .$data_antes."' AND rd.data <= '" .$data_depois."') ORDER BY ID ASC";
-  
-    $resultado_despesasfixas = mysqli_query($con, $query_despesasfixas);
-
-    $m = 0;
-    $despesasfixas = NULL;
-    while ($linha_despesasfixas = mysqli_fetch_object($resultado_despesasfixas)) {
-        $despesasfixas[$i] = $linha_despesasfixas;
-        $m = $m + 1;
-    }
-    
-    
-    //busca os registros para a lista de despesas variaveis  
-    $query_despesasvariaveis = "SELECT rd.*, des.descricao AS descricao, tipo.descricao AS tipo FROM receita_despesa rd
-        LEFT JOIN descricao des ON (des.id_descricao = rd.id_descricao)
-        LEFT JOIN tipo_receita_despesa tipo ON (tipo.id = rd.id_tipo_receita_despesa) WHERE rd.id_tipo_receita_despesa = 4  AND (rd.data >= '" .$data_antes."' AND rd.data <= '" .$data_depois."') ORDER BY ID ASC";
-    
-    $resultado_despesasvariaveis = mysqli_query($con, $query_despesasvariaveis);
-
-    $n = 0;
-    $despesasvariaveis = NULL;
-    while ($linha_despesasvariaveis = mysqli_fetch_object($resultado_despesasvariaveis)) {
-        $despesasvariaveis[$i] = $linha_despesasvariaveis;
-        $n = $n + 1;
-    }
     
 
     //busca os registros para a lista de total de despesas
@@ -126,7 +72,7 @@ if (!isset($_POST["email"])) {
     
     $total_despesas = $total_despesasfixas + $total_despesasvariaveis;
     
-    var_dump($total_despesasvariaveis);die;
+   
     
     //total
     $total_registros = $total_receitas + $total_despesas;
@@ -164,7 +110,8 @@ if (!isset($_POST["email"])) {
         } else {
             $smarty->assign("textSuccess", "As despesas do dia  foram enviadas para o e-mail especificado.");
         }
-        $smarty->display('email.tpl');
+     
+        $smarty->display('envio.tpl');
         
         
        

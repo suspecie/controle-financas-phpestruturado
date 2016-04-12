@@ -60,6 +60,31 @@ function criaform() {
 
 function mostraGrid($mes_antes = NULL,$mes_depois = NULL,$ano_antes = NULL,$ano_depois = NULL) {
     global $con;
+    
+    
+     //Validação Server Side
+    $erro_mg = '';
+    if ($mes_antes == NULL) {
+        $erro_mg .=' Mês é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    if ($ano_antes == NULL) {
+        $erro_mg .=' Ano é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    if ($mes_depois == NULL) {
+        $erro_mg .=' Mes é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    if ($ano_depois == NULL) {
+        $erro_mg .=' Ano é um campo obrigatorio <br>' . PHP_EOL;
+    }
+    
+    
+    if (strlen($erro_mg) > 0) {
+       die("<h1>Erro de Validação!</h1>" . $erro_mg . " Verifique!");      
+    }
+    
 
     if(sizeof($mes_antes) < 10){
         $mes_antes = '0'.$mes_antes;
